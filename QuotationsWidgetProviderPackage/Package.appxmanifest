@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Package
+   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  xmlns:com="http://schemas.microsoft.com/appx/manifest/com/windows10"
+  IgnorableNamespaces="uap uap3 rescap">
+	
+	<Identity
+	  Name="d11da943-4a01-4885-9dfe-3cc7a5095265"
+	  Publisher="CN=wmq"
+	  Version="0.1.0.0" />
+
+	<Properties>
+		<DisplayName>QuotationsWidgetProviderPackage</DisplayName>
+		<PublisherDisplayName>wmq</PublisherDisplayName>
+		<Logo>Images\StoreLogo.png</Logo>
+	</Properties>
+
+	<Dependencies>
+		<TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.14393.0" MaxVersionTested="10.0.14393.0" />
+	</Dependencies>
+
+	<Resources>
+		<Resource Language="x-generate"/>
+	</Resources>
+
+	<Applications>
+		<Application Id="App"
+		  Executable="$targetnametoken$.exe"
+		  EntryPoint="$targetentrypoint$">
+			<uap:VisualElements
+			  DisplayName="QuotationsWidgetProviderPackage"
+			  Description="QuotationsWidgetProviderPackage"
+			  BackgroundColor="transparent"
+			  Square150x150Logo="Images\Square150x150Logo.png"
+			  Square44x44Logo="Images\Square44x44Logo.png">
+				<uap:DefaultTile Wide310x150Logo="Images\Wide310x150Logo.png" />
+				<uap:SplashScreen Image="Images\SplashScreen.png" />
+			</uap:VisualElements>
+			<Extensions>
+				<com:Extension Category="windows.comServer">
+					<com:ComServer>
+						<com:ExeServer Executable="QuotationsWidgetProvider\QuotationsWidgetProvider.exe" DisplayName="QuotationsWidgetProvider">
+							<com:Class Id="DFCAF762-4068-43C7-B4D5-B7CE998C1267" DisplayName="QuotationsWidgetProvider" />
+						</com:ExeServer>
+					</com:ComServer>
+				</com:Extension>
+				<uap3:Extension Category="windows.appExtension">
+				<uap3:AppExtension Name="com.microsoft.windows.widgets" DisplayName="WidgetTestApp" Id="ContosoWidgetApp" PublicFolder="Public">
+					<uap3:Properties>
+						<WidgetProvider>
+							<ProviderIcons>
+								<Icon Path="Images\StoreLogo.png" />
+							</ProviderIcons>
+							<Activation>
+								<!-- Apps exports COM interface which implements IWidgetProvider -->
+								<CreateInstance ClassId="DFCAF762-4068-43C7-B4D5-B7CE998C1267" />
+							</Activation>
+
+							<TrustedPackageFamilyNames>
+								<TrustedPackageFamilyName>Microsoft.MicrosoftEdge.Stable_8wekyb3d8bbwe</TrustedPackageFamilyName>
+							</TrustedPackageFamilyNames>
+
+							<Definitions>
+								<Definition Id="Quotation_list_Widget"
+									DisplayName="行情队列"
+									Description="关注的行情列表"
+									AllowMultiple="true">
+									<Capabilities>
+										<Capability>
+											<Size Name="large" />
+										</Capability>
+									</Capabilities>
+									<ThemeResources>
+										<Icons>
+											<Icon Path="ProviderAssets\Quotation_list_Widget.png" />
+										</Icons>
+										<Screenshots>
+											<Screenshot Path="ProviderAssets\Quotation_list_Widget_Screenshot.png" DisplayAltText="For accessibility" />
+										</Screenshots>
+										<!-- DarkMode and LightMode are optional -->
+										<DarkMode />
+										<LightMode />
+									</ThemeResources>
+								</Definition>
+								<Definition Id="Quotation_Widget"
+											DisplayName="行情"
+											Description="关注的行情"
+											AllowMultiple="true">
+									<Capabilities>
+										<Capability>
+											<Size Name="large" />
+										</Capability>
+									</Capabilities>
+									<ThemeResources>
+										<Icons>
+											<Icon Path="ProviderAssets\Quotation_list_Widget.png" />
+										</Icons>
+										<Screenshots>
+											<Screenshot Path="ProviderAssets\Quotation_list_Widget_Screenshot.png" DisplayAltText="For accessibility" />
+										</Screenshots>
+										<!-- DarkMode and LightMode are optional -->
+										<DarkMode />
+										<LightMode />
+									</ThemeResources>
+								</Definition>
+							</Definitions>
+						</WidgetProvider>
+					</uap3:Properties>
+				</uap3:AppExtension>
+			</uap3:Extension>
+			</Extensions>
+		
+		</Application>
+	</Applications>
+
+	<Capabilities>
+		<Capability Name="internetClient" />
+		<rescap:Capability Name="runFullTrust" />
+	</Capabilities>
+</Package>

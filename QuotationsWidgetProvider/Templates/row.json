@@ -1,0 +1,117 @@
+{
+  "type": "TableRow",
+  "cells": [
+    {
+      "type": "TableCell",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "${$root.row1.name}",
+          "horizontalAlignment": "Left",
+          "wrap": true,
+          "style": "default",
+          "fontType": "Default",
+          "size": "Default",
+          "weight": "Bolder",
+          "color": "Good",
+          "isSubtle": true,
+          "spacing": "Small"
+        },
+        {
+          "type": "TextBlock",
+          "text": "${$root.row1.code}",
+          "wrap": true,
+          "size": "Small",
+          "weight": "Lighter",
+          "color": "Default",
+          "isSubtle": false,
+          "spacing": "None",
+          "horizontalAlignment": "Left"
+        }
+      ],
+      "horizontalAlignment": "Center",
+      "verticalContentAlignment": "Center",
+      "rtl": false,
+      "spacing": "None",
+      "selectAction": {
+        "type": "Action.Execute",
+        "associatedInputs": "none",
+        "id": "${$root.row1.code}",
+        "tooltip": "详情",
+        "title": "${$root.row1.name}"
+      }
+    },
+    {
+      "type": "TableCell",
+      "items": [
+        {
+          "type": "Image",
+          "url": "ProviderAssets\\Quotation_list_Widget.png",
+          "spacing": "None",
+          "horizontalAlignment": "Center",
+          "style": "Person"
+        }
+      ],
+      "selectAction": {
+        "type": "Action.OpenUrl",
+        "id": "{$root.row1.code}",
+        "url": "https://xueqiu.com/S/${$root.row1.code}",
+        "title": "${$root.row1.name}"
+      },
+      "verticalContentAlignment": "Center",
+      "horizontalAlignment": "Center"
+    },
+    {
+      "type": "TableCell",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "${$root.row1.amount}",
+          "wrap": true,
+          "horizontalAlignment": "Right",
+          "size": "Small",
+          "color": "${$root.row1.attention}",
+          "weight": "Default"
+        },
+        {
+          "type": "TextBlock",
+          "text": "${$root.row1.turnover_rate}",
+          "wrap": true,
+          "horizontalAlignment": "Right",
+          "spacing": "None",
+          "color": "${$root.row1.attention}",
+          "weight": "Lighter",
+          "size": "Small"
+        }
+      ],
+      "verticalContentAlignment": "Center",
+      "horizontalAlignment": "Center"
+    },
+    {
+      "type": "TableCell",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "${$root.row1.price}",
+          "wrap": true,
+          "horizontalAlignment": "Right",
+          "size": "Default",
+          "color": "${$root.row1.attention}"
+        },
+        {
+          "type": "TextBlock",
+          "text": "${$root.row1.rise}",
+          "wrap": true,
+          "horizontalAlignment": "Right",
+          "spacing": "None",
+          "color": "${$root.row1.attention}"
+        }
+      ],
+      "verticalContentAlignment": "Center",
+      "horizontalAlignment": "Center"
+    }
+  ],
+  "horizontalCellContentAlignment": "Center",
+  "verticalCellContentAlignment": "Center",
+  "height": "stretch"
+}
