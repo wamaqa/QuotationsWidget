@@ -171,7 +171,7 @@ namespace QuotationsWidgetProvider
                 {
                     var amount = scoket.amount> 10000 * 10000 ? $"{(scoket.amount / 10000 / 10000).ToString("f4")}亿" : $"{(scoket.amount / 10000).ToString("f4")}万";
                     stringDataBuilder.Append($"\"row{index}\":");
-                    string attention = float.Parse(scoket.Rise ?? "") > 0 ? "Attention" : "Good";
+                    string attention = float.Parse(scoket.Rise ?? "0") > 0 ? "Attention" : "Good";
                     string url = $"http://localhost:7090/{scoket.Code}/time.png";
                     string socketJson = $"{{\"name\":\"{scoket.Name}\"," +
                     $"\"code\":\"{scoket.Code}\"," +
